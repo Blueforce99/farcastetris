@@ -1,0 +1,17 @@
+{
+  "accountAssociation": {
+    "header": "eyJmaWQiOjEsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHgwIn0",
+    "payload": "eyJkb21haW4iOiJ0ZXRyaXMtbWluaWFwcC52ZXJjZWwuYXBwIn0",
+    "signature": "MHgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA"
+  },
+  "miniapp": {
+    "version": "1",
+    "name": "Tetris",
+    "iconUrl": "https://via.placeholder.com/512x512?text=TETRIS",
+    "homeUrl": "https://tetris-miniapp.vercel.app/",
+    "imageUrl": "https://via.placeholder.com/1200x630?text=TETRIS+GAME",
+    "buttonTitle": "🎮 Play Tetris",
+    "splashImageUrl": "https://via.placeholder.com/512x512?text=TETRIS",
+    "splashBackgroundColor": "#ffffff"
+  }
+}
