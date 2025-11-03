@@ -14,37 +14,10 @@
     <meta property="og:image" content="https://via.placeholder.com/1200x630?text=TETRIS+GAME">
     <meta property="og:type" content="website">
     
-    <!-- Farcaster Mini App Meta Tags -->
-    <meta name="fc:miniapp" content='{
-      "version": "1",
-      "imageUrl": "https://via.placeholder.com/1200x630?text=TETRIS+GAME",
-      "button": {
-        "title": "🎮 Play Tetris",
-        "action": {
-          "type": "launch_miniapp",
-          "name": "Tetris",
-          "url": "https://tetris-miniapp.vercel.app",
-          "splashImageUrl": "https://via.placeholder.com/512x512?text=TETRIS",
-          "splashBackgroundColor": "#ffffff"
-        }
-      }
-    }' />
-    
-    <!-- For backward compatibility -->
-    <meta name="fc:frame" content='{
-      "version": "1",
-      "imageUrl": "https://via.placeholder.com/1200x630?text=TETRIS+GAME",
-      "button": {
-        "title": "🎮 Play Tetris",
-        "action": {
-          "type": "launch_frame",
-          "name": "Tetris",
-          "url": "https://tetris-miniapp.vercel.app",
-          "splashImageUrl": "https://via.placeholder.com/512x512?text=TETRIS",
-          "splashBackgroundColor": "#ffffff"
-        }
-      }
-    }' />
+    <!-- Farcaster Frame Meta Tag (this is what works) -->
+    <meta property="fc:frame" content="vNext" />
+    <meta property="fc:frame:image" content="https://via.placeholder.com/1200x630?text=TETRIS+GAME" />
+    <meta property="fc:frame:image:aspect_ratio" content="1.91:1" />
     <style>
         * {
             margin: 0;
