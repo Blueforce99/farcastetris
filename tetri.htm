@@ -11,10 +11,40 @@
     <!-- Open Graph for preview -->
     <meta property="og:title" content="🎮 TETRIS">
     <meta property="og:description" content="Classic Tetris game - Play directly in Farcaster!">
-    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=TETRIS">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=TETRIS+GAME">
+    <meta property="og:type" content="website">
     
-    <!-- Farcaster Mini App Meta Tag -->
-    <meta name="fc:miniapp" content="{&quot;version&quot;:&quot;1&quot;,&quot;imageUrl&quot;:&quot;https://via.placeholder.com/1200x630?text=TETRIS&quot;,&quot;button&quot;:{&quot;title&quot;:&quot;🎮 Play Tetris&quot;,&quot;action&quot;:{&quot;type&quot;:&quot;launch_frame&quot;,&quot;name&quot;:&quot;Tetris&quot;,&quot;url&quot;:&quot;https://tetris-miniapp.vercel.app&quot;,&quot;splashImageUrl&quot;:&quot;https://via.placeholder.com/512x512?text=TETRIS&quot;,&quot;splashBackgroundColor&quot;:&quot;#ffffff&quot;}}}">
+    <!-- Farcaster Mini App Meta Tags -->
+    <meta name="fc:miniapp" content='{
+      "version": "1",
+      "imageUrl": "https://via.placeholder.com/1200x630?text=TETRIS+GAME",
+      "button": {
+        "title": "🎮 Play Tetris",
+        "action": {
+          "type": "launch_miniapp",
+          "name": "Tetris",
+          "url": "https://tetris-miniapp.vercel.app",
+          "splashImageUrl": "https://via.placeholder.com/512x512?text=TETRIS",
+          "splashBackgroundColor": "#ffffff"
+        }
+      }
+    }' />
+    
+    <!-- For backward compatibility -->
+    <meta name="fc:frame" content='{
+      "version": "1",
+      "imageUrl": "https://via.placeholder.com/1200x630?text=TETRIS+GAME",
+      "button": {
+        "title": "🎮 Play Tetris",
+        "action": {
+          "type": "launch_frame",
+          "name": "Tetris",
+          "url": "https://tetris-miniapp.vercel.app",
+          "splashImageUrl": "https://via.placeholder.com/512x512?text=TETRIS",
+          "splashBackgroundColor": "#ffffff"
+        }
+      }
+    }' />
     <style>
         * {
             margin: 0;
