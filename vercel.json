@@ -1,4 +1,9 @@
 {
-  "buildCommand": "echo 'No build needed'",
-  "outputDirectory": "."
+  "redirects": [
+    {
+      "source": "/.well-known/farcaster.json",
+      "destination": "https://api.farcaster.xyz/miniapps/hosted-manifest/019a485b-6f6b-650a-8e6b-fdac7fc380b2",
+      "statusCode": 307
+    }
+  ]
 }
