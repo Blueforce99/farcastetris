@@ -61,7 +61,7 @@
             backdrop-filter: blur(10px);
             border: none;
             border-radius: 0;
-            padding: 12px;
+            padding: 8px;
             box-shadow: none;
             display: flex;
             flex-direction: column;
@@ -70,13 +70,13 @@
 
         .header {
             text-align: center;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             flex-shrink: 0;
         }
 
         .title {
             font-family: 'Poppins', sans-serif;
-            font-size: 24px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--fc-purple);
             margin-bottom: 0;
@@ -85,7 +85,7 @@
 
         .game-wrapper {
             display: flex;
-            gap: 12px;
+            gap: 8px;
             margin-bottom: 0;
             flex: 1;
             min-height: 0;
@@ -97,6 +97,7 @@
             display: flex;
             flex-direction: column;
             min-height: 0;
+            aspect-ratio: 1 / 2;
         }
 
         #gameBoard {
@@ -105,32 +106,31 @@
             border-radius: 4px;
             display: grid;
             grid-template-columns: repeat(10, 1fr);
-            gap: 2px;
-            padding: 6px;
-            aspect-ratio: 10 / 20;
+            grid-template-rows: repeat(20, 1fr);
+            gap: 1px;
+            padding: 3px;
             width: 100%;
             height: 100%;
         }
 
         .cell {
             background: #e8e8e8;
-            border-radius: 2px;
-            border: 1px solid #d0d0d0;
+            border-radius: 0px;
+            border: 0.5px solid #d0d0d0;
             transition: all 0.1s ease;
-            min-height: 10px;
         }
 
         .cell.filled {
             background: linear-gradient(135deg, var(--fc-purple), var(--accent-cyan));
             border-color: var(--fc-purple);
-            box-shadow: inset 0 2px 4px rgba(138, 99, 210, 0.2);
+            box-shadow: inset 0 1px 2px rgba(138, 99, 210, 0.2);
         }
 
         .right-panel {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            min-width: 100px;
+            gap: 8px;
+            width: 68px;
             flex-shrink: 0;
             overflow-y: auto;
         }
@@ -138,78 +138,79 @@
         .stats-panel {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
         }
 
         .stat {
             background: linear-gradient(135deg, rgba(138, 99, 210, 0.08) 0%, rgba(6, 182, 212, 0.08) 100%);
-            border: 2px solid var(--fc-purple);
-            border-radius: 6px;
-            padding: 8px;
+            border: 1px solid var(--fc-purple);
+            border-radius: 4px;
+            padding: 4px 5px;
             text-align: center;
         }
 
         .stat-label {
             font-family: 'Space Mono', monospace;
             color: var(--fc-gray);
-            font-size: 9px;
+            font-size: 7px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 3px;
+            letter-spacing: 0.2px;
+            margin-bottom: 1px;
         }
 
         .stat-value {
             font-family: 'Poppins', sans-serif;
-            font-size: 18px;
+            font-size: 13px;
             font-weight: 800;
             color: var(--fc-purple);
         }
 
         .controls {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
             margin-bottom: 0;
             flex-shrink: 0;
         }
 
         .btn {
             font-family: 'Inter', sans-serif;
-            padding: 8px 4px;
-            border: 2px solid var(--fc-purple);
-            border-radius: 6px;
+            padding: 5px 3px;
+            border: 1px solid var(--fc-purple);
+            border-radius: 3px;
             font-weight: 600;
-            font-size: 11px;
+            font-size: 8px;
             cursor: pointer;
             transition: all 0.2s ease;
             text-transform: uppercase;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.2px;
             background: rgba(138, 99, 210, 0.08);
             color: var(--fc-dark-text);
+            white-space: nowrap;
         }
 
         .btn:hover:not(:disabled) {
             background: rgba(138, 99, 210, 0.15);
             border-color: var(--fc-purple);
             transform: translateY(-1px);
-            box-shadow: 0 2px 8px rgba(138, 99, 210, 0.15);
+            box-shadow: 0 2px 6px rgba(138, 99, 210, 0.15);
         }
 
         .btn-primary {
-            grid-column: 1 / -1;
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, var(--fc-purple) 0%, var(--accent-cyan) 100%);
             border: none;
             color: white;
-            font-size: 13px;
+            font-size: 9px;
             font-weight: 700;
-            padding: 10px;
+            padding: 6px;
+            width: 100%;
         }
 
         .btn-primary:hover {
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(138, 99, 210, 0.25);
+            box-shadow: 0 3px 8px rgba(138, 99, 210, 0.25);
         }
 
         .btn:disabled {
@@ -471,6 +472,15 @@
             } else {
                 render();
             }
+        }
+
+        function endGame() {
+            gameRunning = false;
+            gamePaused = false;
+            if (gameLoopId) clearInterval(gameLoopId);
+            startBtn.style.display = 'block';
+            pauseBtn.style.display = 'none';
+            render();
         }
 
         function updateStats() {
