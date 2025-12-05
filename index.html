@@ -20,9 +20,9 @@
         :root {
             --primary-color: #6366f1; /* Indigo */
             --secondary-color: #a5b4fc; /* Light Indigo */
-            --bg-dark: #1c1c1c;
-            --bg-medium: #2a2a2a;
-            --bg-light: #3a3a3a;
+            --bg-dark: #000000; /* PITCH BLACK */
+            --bg-medium: #111111; /* Very dark */
+            --bg-light: #222222; /* Darker than previous */
             --text-light: #f1f1f1;
             --text-medium: #a0a0a0;
             --border-color: #444444;
@@ -43,38 +43,36 @@
             font-family: 'Inter', sans-serif;
             background: var(--bg-dark);
             color: var(--text-light);
-            /* Use 100vh to ensure it fills the viewport */
             min-height: 100vh; 
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 1vh 1vw; /* Use VH/VW for flexible padding */
+            padding: 1vh 1vw; 
         }
 
         .container {
             width: 100%;
             max-width: 400px;
-            /* Use 98% of viewport height minus padding for better fit */
             height: 98vh; 
             background: var(--bg-medium);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 1.5vh 12px; /* Use VH for vertical padding */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            padding: 1.5vh 12px; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); /* Darker shadow */
             display: flex;
             flex-direction: column;
-            overflow: hidden; /* Prevent scrolling inside the container */
+            overflow: hidden; 
         }
 
         .header {
             text-align: center;
-            margin-bottom: 1vh; /* Smaller margin */
+            margin-bottom: 1vh;
             flex-shrink: 0;
         }
 
         .title {
             font-family: 'Poppins', sans-serif;
-            font-size: 5vw; /* Dynamic font size for title */
+            font-size: 5vw; 
             max-font-size: 24px;
             font-weight: 800;
             color: var(--primary-color);
@@ -88,10 +86,11 @@
             justify-content: space-between;
             background: var(--bg-light);
             border-radius: 6px;
-            padding: 1vh 10px; /* Smaller vertical padding */
+            padding: 1vh 10px; 
             margin-bottom: 1vh;
             border: 1px solid var(--border-color);
             flex-shrink: 0;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5); 
         }
 
         .stat {
@@ -102,7 +101,7 @@
         .stat-label {
             font-family: 'Space Mono', monospace;
             color: var(--text-medium);
-            font-size: 2vw; /* Dynamic font size */
+            font-size: 2vw; 
             max-font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
@@ -112,17 +111,17 @@
 
         .stat-value {
             font-family: 'Poppins', sans-serif;
-            font-size: 4vw; /* Dynamic font size */
+            color: var(--success-color);
+            font-size: 4vw; 
             max-font-size: 18px;
             font-weight: 800;
-            color: var(--success-color);
             line-height: 1.2;
         }
 
         .game-wrapper {
             display: flex;
             flex-direction: column; 
-            flex: 1; /* Crucial: Allows the wrapper to fill remaining space */
+            flex: 1; 
             min-height: 0;
             overflow: hidden;
             align-items: center;
@@ -130,25 +129,25 @@
 
         .game-board-container {
             width: 100%;
-            /* Flex-grow allows the board to take up vertical space */
             flex-grow: 1; 
-            /* Maximize board size based on height, constrained by 1:2 aspect ratio */
             max-height: 100%; 
-            /* Ensure the 1:2 aspect ratio is maintained, limited by width */
             max-width: 50vh; 
             aspect-ratio: 1 / 2;
-            background: var(--bg-light);
+            
+            /* PITCH BLACK Board Pit Effect */
+            background: radial-gradient(circle at center, #000000 0%, #111111 100%);
             border: 2px solid var(--primary-color);
             border-radius: 6px;
             padding: 4px;
             position: relative;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 1), 0 0 10px var(--primary-color); /* Deep inner shadow */
         }
         
         #gameBoard {
             display: grid;
             grid-template-columns: repeat(10, 1fr);
             grid-template-rows: repeat(20, 1fr);
-            gap: 1px;
+            gap: 2px;
             width: 100%;
             height: 100%;
         }
@@ -156,15 +155,22 @@
         .cell {
             background: var(--bg-medium);
             border-radius: 1px;
-            border: 0.5px solid #333;
+            border: 0.5px solid #1c1c1c; /* Darker cell border */
             transition: background 0.05s ease;
+            box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5); 
         }
 
+        /* --- 3D Block Effect --- */
         .cell.filled {
             border: none;
-            box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5), 0 0 2px rgba(255, 255, 255, 0.1);
+            background: transparent; 
+            
+            box-shadow: 
+                inset 1px 1px 2px rgba(255, 255, 255, 0.5), 
+                inset -1px -1px 2px rgba(0, 0, 0, 0.5), 
+                0 0 4px rgba(0, 0, 0, 0.8);
         }
-        
+
         /* --- Start Screen Overlay --- */
         #startScreen {
             position: absolute;
@@ -172,7 +178,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(42, 42, 42, 0.95);
+            background: rgba(17, 17, 17, 0.95); /* Darker overlay */
             z-index: 20;
             display: flex;
             flex-direction: column;
@@ -180,6 +186,7 @@
             align-items: center;
             border-radius: 6px;
             transition: opacity 0.3s ease;
+            padding: 20px;
         }
 
         #startScreen.hidden {
@@ -189,8 +196,45 @@
         .start-message {
             color: var(--text-light);
             font-size: 4vw;
-            margin-bottom: 20px;
+            margin-bottom: 2vh;
             text-align: center;
+        }
+        
+        .instructions {
+            width: 100%;
+            max-width: 250px;
+            margin-top: 2vh;
+            padding: 15px;
+            background: var(--bg-medium);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+            font-size: 3.5vw;
+            line-height: 1.4;
+        }
+
+        .instructions h4 {
+            font-size: 4vw;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .instructions ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-family: 'Space Mono', monospace;
+            font-size: 3vw;
+        }
+        
+        .instructions ul li {
+            margin-bottom: 4px;
+        }
+        
+        .instructions strong {
+            color: var(--success-color);
         }
 
         #startBtn_Center {
@@ -198,54 +242,36 @@
             padding: 2vh 4vw;
             min-height: 50px;
             min-width: 150px;
+            margin-top: 3vh;
         }
 
-        /* --- Integrated Touch Controls (Controller Area) --- */
-        .touch-controls {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            padding: 1vh 0; /* Smaller vertical padding */
-            flex-shrink: 0;
-        }
-
-        .action-btn-row {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1vh;
-        }
-
-        .move-btn-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            gap: 10px;
-            width: 95%;
-            max-width: 380px;
-        }
-
+        /* --- 3D Button Style --- */
         .btn {
             font-family: 'Poppins', sans-serif;
-            padding: 2vh 0; /* Dynamic vertical padding */
+            padding: 2vh 0; 
             border: none;
             border-radius: 8px;
             font-weight: 600;
             font-size: 4.5vw; 
             max-font-size: 16px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.1s ease;
             background: var(--bg-light);
             color: var(--text-light);
+            
             border: 1px solid var(--border-color);
-            box-shadow: 0 4px 0 var(--border-color), 0 6px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 
+                0 0 8px rgba(0, 0, 0, 0.5), 
+                0 6px 0 var(--border-color); 
         }
 
         .btn:active:not(:disabled) {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0 var(--border-color), 0 4px 6px rgba(0, 0, 0, 0.5);
+            transform: translateY(6px); 
+            box-shadow: 
+                0 0 8px rgba(0, 0, 0, 0.5), 
+                0 0 0 var(--border-color); 
         }
-
+        
         .btn-primary {
             background: var(--primary-color);
             color: var(--bg-dark);
@@ -254,21 +280,32 @@
             padding: 1vh 3vw;
             width: auto;
             border-radius: 20px;
+            box-shadow: 
+                0 0 8px rgba(0, 0, 0, 0.5), 
+                0 4px 0 #3a3b90; 
+        }
+        
+        .btn-primary:active:not(:disabled) {
+            transform: translateY(4px); 
+            box-shadow: 
+                0 0 8px rgba(0, 0, 0, 0.5), 
+                0 0 0 #3a3b90; 
         }
         
         #pauseBtn {
             background: var(--danger-color);
-            color: white;
         }
 
         .btn:disabled {
             opacity: 0.4;
             cursor: not-allowed;
             transform: none;
-            box-shadow: 0 4px 0 var(--border-color), 0 6px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 
+                0 0 8px rgba(0, 0, 0, 0.5), 
+                0 6px 0 var(--border-color); 
         }
 
-        /* Game Over Modal (Keep Styling) */
+        /* Game Over Modal (No changes to the modal itself) */
         #gameOverModal {
             position: absolute;
             top: 0;
@@ -276,7 +313,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.85);
-            z-index: 30; /* Higher than start screen */
+            z-index: 30; 
             backdrop-filter: blur(4px);
             border-radius: 6px;
             justify-content: center;
@@ -290,35 +327,8 @@
         #gameOverModal.show {
             display: flex;
         }
-        /* ... (Modal content styling remains similar, but using VW/VH for dynamic text size) ... */
-        .modal-content h3 {
-            font-family: 'Poppins', sans-serif;
-            color: var(--danger-color);
-            font-size: 7vw; 
-            margin-bottom: 2vh;
-            text-shadow: 0 0 10px rgba(239, 68, 68, 0.7);
-        }
         
-        .modal-content p {
-            font-size: 4vw;
-            color: var(--text-light);
-            margin-bottom: 2vh;
-        }
-
-        #finalScore {
-            font-size: 8vw;
-            font-weight: 800;
-            color: var(--primary-color);
-            margin-bottom: 2vh;
-        }
-
-        #restartBtn {
-            font-size: 4.5vw;
-            padding: 2vh 4vw;
-        }
-
-
-        /* Media query for landscape/wide screens (less important for Farcaster, but good for fit) */
+        /* Media query for desktop size (fixes font sizes) */
         @media (min-width: 600px) and (min-height: 400px) {
             .title { font-size: 24px; }
             .stat-label { font-size: 10px; }
@@ -327,9 +337,9 @@
             .btn-primary { font-size: 14px; padding: 8px 30px; }
             #startBtn_Center { font-size: 20px; padding: 20px 40px; }
             .start-message { font-size: 16px; }
-            .modal-content h3 { font-size: 28px; }
-            #finalScore { font-size: 32px; }
-            #restartBtn { font-size: 16px; }
+            .instructions { font-size: 14px; max-width: 300px; }
+            .instructions h4 { font-size: 16px; }
+            .instructions ul { font-size: 12px; }
         }
     </style>
 </head>
@@ -360,6 +370,15 @@
                 
                 <div id="startScreen">
                     <div class="start-message">Press START to begin the Tetris challenge!</div>
+                    
+                    <div class="instructions">
+                        <h4>CONTROL INSTRUCTIONS</h4>
+                        <ul>
+                            <li><strong>Mobile:</strong> Tap on the board to rotate. Swipe left/right to move. Swipe down to soft drop.</li>
+                            <li><strong>Desktop:</strong> Use **Arrow Keys** to move/rotate. Use **Spacebar** to instant drop (hard drop).</li>
+                        </ul>
+                    </div>
+                    
                     <button class="btn btn-primary" id="startBtn_Center">START</button>
                 </div>
 
@@ -482,7 +501,6 @@
                 shape: rotate(currentPiece.shape)
             };
             
-            // Wall Kick attempts
             if (canPlace(rotated, currentX, currentY)) {
                 currentPiece = rotated;
                 render();
@@ -508,7 +526,6 @@
                 score += 2; 
             }
             lockPiece();
-            // Reset interval after a fast drop
             if (gameLoopId) {
                 clearInterval(gameLoopId);
                 gameLoopId = setInterval(gameLoop, gameSpeed);
@@ -590,8 +607,9 @@
                     } else if (displayBoard[row][col]) {
                         cell.classList.add('filled');
                         const color = displayBoard[row][col];
-                        cell.style.background = color;
-                        cell.style.borderColor = color;
+                        
+                        const gradient = `linear-gradient(135deg, ${color} 0%, ${color}DD 100%)`;
+                        cell.style.background = gradient;
                     }
                     
                     gameBoard.appendChild(cell);
@@ -655,8 +673,9 @@
                     if (displayBoard[row][col]) {
                         cell.classList.add('filled');
                         const color = displayBoard[row][col];
-                        cell.style.background = color;
-                        cell.style.borderColor = color;
+                        
+                        const gradient = `linear-gradient(135deg, ${color} 0%, ${color}DD 100%)`;
+                        cell.style.background = gradient;
                     }
                     gameBoard.appendChild(cell);
                 }
@@ -709,7 +728,6 @@
             gamePaused = !gamePaused;
             pauseBtn.textContent = gamePaused ? 'RESUME' : 'PAUSE';
             
-            // Disable/Enable movement buttons when paused
             controlButtons.forEach(btn => btn.disabled = gamePaused);
         }
 
@@ -757,11 +775,9 @@
                 
                 const velocity = Math.abs(deltaX) / (deltaTime + 1);
                 
-                // Tap/Small Swipe for Rotation
                 if (Math.abs(deltaX) < 15 && Math.abs(deltaY) < 15 && deltaTime < 150) {
                     rotatePiece();
                 }
-                // Horizontal Swipe (Left/Right)
                 else if (Math.abs(deltaY) < 60 && velocity > 0.3) {
                     if (deltaX < -20) {
                         movePiece(-1);
@@ -769,7 +785,6 @@
                         movePiece(1);
                     }
                 }
-                // Down Swipe for Drop
                 else if (deltaY > 30 && Math.abs(deltaX) < 50) {
                     dropPiece();
                 }
